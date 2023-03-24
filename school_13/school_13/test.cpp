@@ -181,66 +181,140 @@ using  namespace  std;
 //    return  0;
 //}
 
-class Complex
+//class Complex
+//{
+//public:
+//    Complex(float a, float b)
+//    {
+//        m_a = a, m_b = b;
+//    }
+//
+//    void show()
+//    {
+//        if (m_a != 0 && m_b < 0)
+//        {
+//            cout << fixed << setprecision(2) << m_a << fixed << setprecision(2) << m_b << "i";
+//        }
+//        else if (m_a != 0 && m_b > 0)
+//        {
+//            cout << fixed << setprecision(2) << m_a << fixed << setprecision(2) << "+" << m_b << "i";
+//        }
+//        else if (m_a != 0 && m_b == 0)
+//        {
+//            cout << fixed << setprecision(2) << m_a ;
+//        }
+//        else if (m_a == 0 && m_b < 0)
+//        {
+//            cout << fixed << setprecision(2) << m_b << "i";
+//        }
+//        else if (m_a == 0 && m_b > 0)
+//        {
+//            cout << fixed << setprecision(2)  << m_b << "i";
+//        }
+//        else
+//        {
+//            cout << "0";
+//        }
+//    }
+//
+//    Complex add(Complex& s)
+//    {
+//        this->m_a = this->m_a + s.m_a;
+//        this->m_b = this->m_b + s.m_b;
+//        return s;
+//    }
+//
+//    float m_a, m_b;
+//};
+//
+//int  main() {
+//    float  a, b;
+//    cin >> a >> b;
+//    Complex  c1(a, b);
+//    c1.show();
+//    cout << endl;
+//    cin >> a >> b;
+//    Complex  c2(a, b);
+//    c2.show();
+//    cout << endl;
+//    c1.add(c2);
+//    c1.show();
+//
+//    return  0;
+//}
+
+#include  <iostream>
+#include    <iomanip>
+using  namespace  std;
+
+class    Payroll
 {
 public:
-    Complex(float a, float b)
-    {
-        m_a = a, m_b = b;
-    }
+    float m_hour, pay_per_hour;
 
-    void show()
-    {
-        if (m_a != 0 && m_b < 0)
-        {
-            cout << fixed << setprecision(2) << m_a << fixed << setprecision(2) << m_b << "i";
-        }
-        else if (m_a != 0 && m_b > 0)
-        {
-            cout << fixed << setprecision(2) << m_a << fixed << setprecision(2) << "+" << m_b << "i";
-        }
-        else if (m_a != 0 && m_b == 0)
-        {
-            cout << fixed << setprecision(2) << m_a ;
-        }
-        else if (m_a == 0 && m_b < 0)
-        {
-            cout << fixed << setprecision(2) << m_b << "i";
-        }
-        else if (m_a == 0 && m_b > 0)
-        {
-            cout << fixed << setprecision(2) << "+" << m_b << "i";
-        }
-        else
-        {
-            cout << "0";
-        }
-    }
+    Payroll(float  hour);
+    void  setPay_per_hour(float  pph);
 
-    Complex add(Complex& s)
-    {
-        this->m_a = this->m_a + s.m_a;
-        this->m_b = this->m_b + s.m_b;
-        return s;
-    }
 
-    float m_a, m_b;
+
 };
 
+Payroll::Payroll(float  hour)
+{
+    float m_hour;
+    m_hour = hour;
+
+}
+void  Payroll::setPay_per_hour(float  pph)
+{
+    float pay_per_hour;
+    pay_per_hour = pph;
+}
+
+bool  Payroll::setHours(float  hour)
+{
+    if (hour >= 0 && hour <= 60)
+    {
+        hours = hour;
+        total_pay = pay_per_hour * hours;
+        return  true;
+    }
+    else
+        return  false;
+}
+
+float  Payroll::getPayment()
+{
+    return  total_pay;
+}
 
 
-int  main() {
-    float  a, b;
-    cin >> a >> b;
-    Complex  c1(a, b);
-    c1.show();
+int  main()
+{
+    Payroll  employee[10];
+    float    pph;
+    float    tHour;
+    cin >> pph;
+
+    for (int i = 0; i < 10; i++)
+    {
+        employee[i].setPay_per_hour(pph);
+        while (true)
+        {
+            cin >> tHour;
+            if (employee[i].setHours(tHour))
+                break;
+            else
+            {
+
+            }
+        }
+    }
     cout << endl;
-    cin >> a >> b;
-    Complex  c2(a, b);
-    c2.show();
-    cout << endl;
-    c1.add(c2);
-    c1.show();
+
+    for (int i = 0; i < 10; i++)
+        cout << setiosflags(ios::fixed) << setprecision(2)
+        << employee[i].getPayment() << "  ";
 
     return  0;
 }
