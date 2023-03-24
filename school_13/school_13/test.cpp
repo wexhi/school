@@ -246,74 +246,144 @@ using  namespace  std;
 //}
 
 
-class    Payroll
+//class    Payroll
+//{
+//public:
+//
+//    float pay_per_hour, total_pay, hours;
+//
+//    Payroll(){}
+//    
+//
+//    Payroll(float  hour);
+//    void  setPay_per_hour(float  pph);
+//    bool  setHours(float  hour);
+//    float  getPayment();
+//};
+//
+//Payroll::Payroll(float  hour)
+//{
+//    ;
+//}
+//void  Payroll::setPay_per_hour(float  pph)
+//{
+//    pay_per_hour = pph;
+//}
+//
+//bool  Payroll::setHours(float  hour)
+//{
+//    if (hour >= 0 && hour <= 60)
+//    {
+//        hours = hour;
+//        total_pay = pay_per_hour * hours;
+//        return  true;
+//    }
+//    else
+//        return  false;
+//}
+//
+//float  Payroll::getPayment()
+//{
+//    return  total_pay;
+//}
+//
+//
+//int  main()
+//{
+//    Payroll  employee[10];
+//    float    pph;
+//    float    tHour;
+//    cin >> pph;
+//
+//    for (int i = 0; i < 10; i++)
+//    {
+//        employee[i].setPay_per_hour(pph);
+//        while (true)
+//        {
+//            cin >> tHour;
+//            if (employee[i].setHours(tHour))
+//                break;
+//            else
+//            {
+//
+//            }
+//        }
+//    }
+//    cout << endl;
+//
+//    for (int i = 0; i < 10; i++)
+//        cout << setiosflags(ios::fixed) << setprecision(2)
+//        << employee[i].getPayment() << "  ";
+//
+//    return  0;
+//}
+
+class Point 
 {
 public:
+    Point(double x, double y)
+    {
+        m_x = x, m_y = y;
+    }
 
-    float pay_per_hour, total_pay, hours;
+    void draw()
+    {
+        cout << "Point:x=" << m_x <<  ",y=" << m_y;
+    }
 
-    Payroll(){}
-    
-
-    Payroll(float  hour);
-    void  setPay_per_hour(float  pph);
-    bool  setHours(float  hour);
-    float  getPayment();
+    double m_x, m_y;
 };
 
-Payroll::Payroll(float  hour)
-{
-    ;
-}
-void  Payroll::setPay_per_hour(float  pph)
-{
-    pay_per_hour = pph;
-}
 
-bool  Payroll::setHours(float  hour)
+class Line
 {
-    if (hour >= 0 && hour <= 60)
+public:
+    double m_x1, m_y1, m_x2, m_y2;
+
+    Line(const Point& p1, const Point& p2)
     {
-        hours = hour;
-        total_pay = pay_per_hour * hours;
-        return  true;
+        m_x1 = p1.m_x;
+        m_y1 = p1.m_y;
+        m_x2 = p2.m_x;
+        m_y2 = p2.m_y;
     }
-    else
-        return  false;
-}
 
-float  Payroll::getPayment()
+    void draw()
+    {
+        cout << "Line:(Point:x=" << m_x1 << ",y=" << m_y1 << ";Point:x=" << m_x2 << ",y=" << m_y2 <<  ")" << endl;
+    }
+};
+
+class Circle
 {
-    return  total_pay;
-}
+public:
+    double m_r, m_x, m_y;
 
+    Circle(const Point& p, double r)
+    {
+        m_r = r;
+        m_x = p.m_x;
+        m_y = p.m_y;
+    }
+
+    void draw()
+    {
+        cout << "Circle:(radius:" << m_r << ";orgin:Point:x=" << m_x << ",y=" << m_y << ")" << endl;
+    }
+};
 
 int  main()
 {
-    Payroll  employee[10];
-    float    pph;
-    float    tHour;
-    cin >> pph;
-
-    for (int i = 0; i < 10; i++)
-    {
-        employee[i].setPay_per_hour(pph);
-        while (true)
-        {
-            cin >> tHour;
-            if (employee[i].setHours(tHour))
-                break;
-            else
-            {
-
-            }
-        }
-    }
+    double  x1, y1, x2, y2, r;
+    cin >> x1 >> y1 >> x2 >> y2 >> r;
+    Point  p1(x1, y1);
+    Point  p2(x2, y2);
+    Line  L(p1, p2);
+    Circle  c(p2, r);
+    p1.draw();
     cout << endl;
-
-    for (int i = 0; i < 10; i++)
-        cout << setiosflags(ios::fixed) << setprecision(2)
-        << employee[i].getPayment() << "  ";
+    L.draw();
+    c.draw();
 
     return  0;
 }
