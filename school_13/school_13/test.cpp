@@ -209,7 +209,7 @@ using  namespace  std;
 //        }
 //        else if (m_a == 0 && m_b > 0)
 //        {
-//            cout << fixed << setprecision(2)  << m_b << "i";
+//            cout << fixed << setprecision(2) << "+" << m_b << "i";
 //        }
 //        else
 //        {
@@ -226,7 +226,9 @@ using  namespace  std;
 //
 //    float m_a, m_b;
 //};
-//
+
+
+
 //int  main() {
 //    float  a, b;
 //    cin >> a >> b;
@@ -243,31 +245,28 @@ using  namespace  std;
 //    return  0;
 //}
 
-#include  <iostream>
-#include    <iomanip>
-using  namespace  std;
 
 class    Payroll
 {
 public:
-    float m_hour, pay_per_hour;
+
+    float pay_per_hour, total_pay, hours;
+
+    Payroll(){}
+    
 
     Payroll(float  hour);
     void  setPay_per_hour(float  pph);
-
-
-
+    bool  setHours(float  hour);
+    float  getPayment();
 };
 
 Payroll::Payroll(float  hour)
 {
-    float m_hour;
-    m_hour = hour;
-
+    ;
 }
 void  Payroll::setPay_per_hour(float  pph)
 {
-    float pay_per_hour;
     pay_per_hour = pph;
 }
 
