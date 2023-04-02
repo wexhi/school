@@ -154,14 +154,14 @@ int main()
 	//}
 
 	//输出数组b
-	//for (int i = 0; i < n; i++)
-	//{
-	//	for (int j = 0; j < n; j++)
-	//	{
-	//		cout << b[i][j] << " ";
-	//	}
-	//	cout << endl;
-	//}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << b[i][j] << " ";
+		}
+		cout << endl;
+	}
 
 	//将数组写入文件,以空格为分隔符
 	ofstream ofs("out.dat", ios::out | ios::binary);
