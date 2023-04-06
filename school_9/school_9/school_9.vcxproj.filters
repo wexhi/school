@@ -15,8 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testcpp.cpp">
+    <ClCompile Include="school_9..6.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="school_9.6_function.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mind_game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
