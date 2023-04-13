@@ -8,3 +8,13 @@ void Users::showMenu()
 	cout << "*********** 0.退出系统 ***********  " <<endl;
 	cout << "********************************** " << endl;
 }
+
+void Users::userLogin()
+{
+	cout << "请输入用户名：" << endl;
+	string userName;
+	cin >> userName;
+	cout << "请输入密码：" << endl;
+	string userPwd;
+	cin >> userPwd;
+}

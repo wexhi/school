@@ -11,6 +11,7 @@ public:
 	//展示菜单
 	void showMenu();
 
-
+	//用户登陆
+	void userLogin();
 
 };
