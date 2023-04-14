@@ -68,8 +68,6 @@ int find(char mind[ROWS][COLS], int i, int j)
 				{
 					count++;
 				}
-				
-
 			}
 		}
 		return count;
