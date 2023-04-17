@@ -79,6 +79,7 @@ void  SalesSystem::createGoods(User &u)
 		while (this->goods_arr[i].getID() == id)
 		{
 			cout << "商品编号重复，请重新输入" << endl;
+			i = 0;//初始化i，重新查找是否有重复的，防止无法找到之前的重复
 			cin >> id;
 		}
 	}
@@ -86,12 +87,14 @@ void  SalesSystem::createGoods(User &u)
 	string name;
 	cout << "请输入商品名称:>" << endl;
 	cin >> name;
+	
 	//判断商品名称是否重复
 	for (int i = 0; i < this->goods_arr.size(); i++)
 	{
 		while (this->goods_arr[i].getName() == name)
 		{
 			cout << "商品名称重复，请重新输入" << endl;
+			i = 0;//初始化i，重新查找是否有重复的，防止无法找到之前的重复
 			cin >> name;
 		}
 	}
@@ -113,13 +116,14 @@ void  SalesSystem::createGoods(User &u)
 	//将商品信息写入文件
 	goods.save();
 
+	//将商品信息写入容器,方便之后的操作
 	goods_arr.push_back(goods);
+
+	//商品数量+1
 	this->m_allGoodsNums++;
 
 	//记录操作记录
-	string operation = "新增商品";
-	string  user_name = u.getUserName();
-	History h1(id, user_name, 1, operation);
+	History h1(id, u.getUserName(), 1, "新增商品");
 
 	cout << "新增商品成功" << endl;
 	system("pause");
@@ -158,7 +162,7 @@ void SalesSystem::show()
 	cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
 	for (int i = 0; i < this->goods_arr.size(); i++)
 	{
-		goods_arr[i].show();
+		goods_arr[i].show();//这里调用的是Goods类内函数
 	}
 }
 
@@ -166,9 +170,7 @@ void SalesSystem::show()
 //删除商品
 void SalesSystem::deleteGoods(User &u)
 {
-
-	show();
-
+	show();//这是调用SalesSystem类的函数
 
 	int choice = 0;
 	cout << "请选择删除方式:>" << endl;
@@ -181,18 +183,18 @@ void SalesSystem::deleteGoods(User &u)
 		int id = 0;
 		cout << "请输入要删除的商品编号:>" << endl;
 		cin >> id;
+		
 		if (findGoodsID(id) >= 0)
 		{
 			//删除商品
 			this->goods_arr.erase(this->goods_arr.begin() + findGoodsID(id));
-			this->m_allGoodsNums--;
+			this->m_allGoodsNums--;//商品种类数量-1
+			
 			//更新文件
 			update();
 
 			//记录操作
-			string operation = "删除商品";
-			string  user_name = u.getUserName();
-			History h1(id, user_name, 1, operation);
+			History h1(id, u.getUserName(), 1, "删除商品");
 
 			cout << "删除商品成功" << endl;
 		}
@@ -206,19 +208,17 @@ void SalesSystem::deleteGoods(User &u)
 		string name;
 		cout << "请输入商品名称:>" << endl;
 		cin >> name;
-		//判断商品名称是否重复
+		
 		if (findGoodsName(name) >= 0)
 		{
 			//在删除后下标消失，因此需要提前记录
 			//记录操作
 			int id = this->goods_arr[findGoodsName(name)].getID();
-			string operation = "删除商品";
-			string  user_name = u.getUserName();
-			History h1(id, user_name, 1, operation);
+			History h1(id, u.getUserName(), 1, "删除商品");
 
 			//删除商品
 			this->goods_arr.erase(this->goods_arr.begin() + findGoodsName(name));
-			this->m_allGoodsNums--;
+			this->m_allGoodsNums--;//商品种类数量-1
 			
 			//更新文件
 			update();
@@ -279,6 +279,7 @@ void SalesSystem::addGoods(User& u)
 	cout << "1.按商品编号进货" << endl;
 	cout << "2.按商品名称进货" << endl;
 	cin >> choice;
+	
 	if (choice == 1)
 	{
 		int id = 0;
@@ -299,10 +300,7 @@ void SalesSystem::addGoods(User& u)
 				update();
 
 				//记录操作
-				string operation = "商品进货";
-				string  user_name = u.getUserName();
-				History h1(id, user_name, num, operation);
-
+				History h1(id, u.getUserName(), num, "商品进货");
 
 				system("pause");
 				system("cls");
@@ -326,7 +324,7 @@ void SalesSystem::addGoods(User& u)
 		string name;
 		cout << "请输入商品名称:>" << endl;
 		cin >> name;
-		//判断商品名称是否重复
+		
 		if (findGoodsName(name) >= 0)
 		{
 			cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
@@ -334,6 +332,7 @@ void SalesSystem::addGoods(User& u)
 			int num = 0;
 			cout << "请输入进货数量:>" << endl;
 			cin >> num;
+			
 			if (num > 0)
 			{
 				goods_arr[findGoodsName(name)].addNum(num);
@@ -342,9 +341,7 @@ void SalesSystem::addGoods(User& u)
 				update();
 
 				//记录操作
-				string operation = "商品进货";
-				string  user_name = u.getUserName();
-				History h1(goods_arr[findGoodsName(name)].getID(), user_name, num, operation);
+				History h1(goods_arr[findGoodsName(name)].getID(), u.getUserName(), num, "商品进货");
 
 				system("pause");
 				system("cls");
@@ -383,18 +380,22 @@ void SalesSystem::saleGoods(User& u)
 	cout << "1.按商品编号销售" << endl;
 	cout << "2.按商品名称销售" << endl;
 	cin >> choice;
+	
 	if (choice == 1)
 	{
 		int id = 0;
 		cout << "请输入要销售的商品编号:>" << endl;
 		cin >> id;
+		
 		if (findGoodsID(id) >= 0)
 		{
 			cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+			
 			goods_arr[findGoodsID(id)].show();
 			int num = 0;
 			cout << "请输入销售数量:>" << endl;
 			cin >> num;
+			
 			if (num > 0 && num <= goods_arr[findGoodsID(id)].getNum())
 			{
 				goods_arr[findGoodsID(id)].subNum(num);
@@ -594,6 +595,7 @@ void SalesSystem::checkGoods(User& u)
 //查找商品(根据商品编号)
 int SalesSystem::findGoodsID(int id)
 {
+	//经过循环在容器内遍历查找，若找到，返回下标，找不到，返回-1
 	for (int i = 0; i < this->goods_arr.size(); i++)
 	{
 		if (this->goods_arr[i].getID() == id)
@@ -607,6 +609,7 @@ int SalesSystem::findGoodsID(int id)
 //查找商品(根据商品名称)
 int SalesSystem::findGoodsName(string name)
 {
+	//经过循环在容器内遍历查找，若找到，返回下标，找不到，返回-1
 	for (int i = 0; i < this->goods_arr.size(); i++)
 	{
 		if (this->goods_arr[i].getName() == name)
@@ -967,7 +970,7 @@ History::History(int id, string opeeration, int num, string Username )
 		cout << "文件打开失败" << endl;
 		return;
 	}
-	ofs << m_ID << "\t" << "\t" << m_Username << "\t" << m_Operation << "\t" << m_Num << "\t" << m_Time << endl;
+	ofs << m_ID << "\t" << "\t" << m_Username << "\t" << m_Operation << "\t" << m_Num << "\t" << "\t" << m_Time << endl;
 
 	ofs.close();
 }
@@ -987,11 +990,13 @@ void SalesSystem::showHistory()
 	string line;
 
 	//展示
-	cout << "商品编号" << "\t"  << "操作方式" << "\t"  << "操作员" << "\t"  << "数量" << "\t" << "时间" << endl;
+	cout << "商品编号" << "\t"  << "操作方式" << "\t"  << "操作员" << "\t"  << "\t" << "数量" << "\t" << "时间" << endl << endl;
 	while (getline(ifs, line))
 	{
 		cout << line << endl;
+		cout <<"--------------------------------------------------------------------------" << endl;
 	}
+	
 	ifs.close();
 	system("pause");
 	system("cls");

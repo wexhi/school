@@ -7,15 +7,15 @@ bool Sales_item(User& u)
 {
 	int choice = 0;
 	SalesSystem sal;
-	bool is_continue = true;
+	bool is_continue = true;//判断是否继续
 
 
 
 	while (is_continue)
 	{
-		sal.showMenu();
+		sal.showMenu();//展示菜单
 		cin >> choice;
-		string confirm;
+		string confirm;//判断，在case 8中使用
 
 		switch (choice)
 		{
@@ -27,6 +27,7 @@ bool Sales_item(User& u)
 				return false;
 			}
 			break;
+		
 		case 1:
 			//增加商品
 			sal.createGoods(u);

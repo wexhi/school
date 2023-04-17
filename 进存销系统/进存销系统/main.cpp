@@ -9,12 +9,6 @@ int main()
 {
 
 	User_item();
-	//²âÊÔ
-	//cout << getNowTime() << endl;
-	//History h1(1, "test", 1, "test");
-
-	//show();
-	
 
 	system("pause");
 	return 0;
