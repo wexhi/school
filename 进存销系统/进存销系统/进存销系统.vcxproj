@@ -46,7 +46,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,10 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="good.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="operation.cpp" />
+    <ClCompile Include="Sales_itemcpp.cpp" />
     <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="goods.h" />
+    <ClInclude Include="operation.h" />
     <ClInclude Include="Sales_item.h" />
     <ClInclude Include="Users.h" />
   </ItemGroup>
