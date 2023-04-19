@@ -42,16 +42,12 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < C.size(); i++)
-	{
-		cout << C[i] << " ";
-		if (C[i] > max)
-		{
-			max = C[i];
-		}
-	}
 
-	cout << endl;
+	if (C.size() == 0)
+	{
+		cout << "0";
+		return 0;
+	}
 	cout << max;
 
 	if (arr != NULL)
