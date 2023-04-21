@@ -8,15 +8,7 @@ using namespace std;
 int main()
 {
 
-
-	//User u;
-	//User_item(u);
-	//²âÊÔ
-	//cout << getNowTime() << endl;
-	History h1(1, "test", 1, "test");
-	History h;
-	h.show();
-	
+	User_item();
 
 	system("pause");
 	return 0;

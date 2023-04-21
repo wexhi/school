@@ -127,6 +127,7 @@ bool User::signIn()
 	cin >> this->m_Name;
 	cout << "请输入密码：" << endl;
 	cin >> this->m_Passwaord;
+	
 	//读取文件中的信息
 	ifstream ifs;
 	ifs.open("users.txt", ios::in);
@@ -135,20 +136,23 @@ bool User::signIn()
 		cout << "文件不存在" << endl;
 		return false;
 	}
+	
 	string name;
 	string password;
-	while (ifs >> name >> password)
+	while (ifs >> name >> password)//从文件中读取数据，判断是否有该用户
 	{
 		if (name == this->m_Name && password == this->m_Passwaord)
 		{
 			cout << "登陆成功！" << endl;
 			this->is_login = true;
+			
 			//记录现在登陆的账号
 			this->m_User_Now.push_back(User(this->m_Name, this->m_Passwaord));
 
 			return true;
 		}
 	}
+	
 	cout << "用户名或密码错误！" << endl;
 	system("pause");
 	system("cls");

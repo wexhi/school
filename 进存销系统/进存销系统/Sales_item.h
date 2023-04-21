@@ -24,22 +24,22 @@ public:
 	void showMenu();
 
 	//新增商品
-	void createGoods();
+	void createGoods(User& u);
 
 	//获取商品种类数量
 	int getGoodsNums();
 	
 	//删除商品
-	void deleteGoods();
+	void deleteGoods(User& u);
 
 	//商品进货
-	void addGoods();
+	void addGoods(User& u);
 
 	//商品销售
-	void saleGoods();
+	void saleGoods(User& u);
 
 	//盘点商品
-	void checkGoods();
+	void checkGoods(User& u);
 
 	//查找商品(根据商品编号)
 	int findGoodsID(int id);
@@ -63,7 +63,10 @@ public:
 	void sortGoods();
 
 	//记录操作历史
-	void recordHistory(string str);
+	//void recordHistory(string str);
+
+	//显示操作历史
+	void showHistory();
 
 
 private:
@@ -81,14 +84,8 @@ string getNowTime();
 class History
 {
 public:
+	//构造函数
 	History(int id, string opeeration, int num, string Username);
-
-
-	History();
-
-	void show();
-
-	~History();
 
 private:
 	int m_ID;//商品编号
@@ -97,8 +94,8 @@ private:
 	int m_Num;//改变商品数量
 	string m_Time;//操作时间
 
-	vector<History>history_arr;
 
 };
+
 
 

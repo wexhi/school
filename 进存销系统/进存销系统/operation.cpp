@@ -7,15 +7,15 @@ bool Sales_item(User& u)
 {
 	int choice = 0;
 	SalesSystem sal;
-	bool is_continue = true;
+	bool is_continue = true;//判断是否继续
 
 
 
 	while (is_continue)
 	{
-		sal.showMenu();
+		sal.showMenu();//展示菜单
 		cin >> choice;
-		string confirm;
+		string confirm;//判断，在case 8中使用
 
 		switch (choice)
 		{
@@ -27,21 +27,22 @@ bool Sales_item(User& u)
 				return false;
 			}
 			break;
+		
 		case 1:
 			//增加商品
-			sal.createGoods();
+			sal.createGoods(u);
 			break;
 		case 2:
 			//删除商品
-			sal.deleteGoods();
+			sal.deleteGoods(u);
 			break;
 		case 3:
 			//商品进货
-			sal.addGoods();
+			sal.addGoods(u);
 			break;
 		case 4:
 			//商品销售
-			sal.saleGoods();
+			sal.saleGoods(u);
 			break;
 
 		case 5:
@@ -49,13 +50,14 @@ bool Sales_item(User& u)
 			sal.showGoods();
 			break;
 
-			case 6:
-				//显示操作记录（测试）
-				
+		case 6:
+			//显示操作记录（测试）
+			sal.showHistory();
+			break;
 
 		case 7:
 			//盘点商品
-			sal.checkGoods();
+			sal.checkGoods(u);
 			break;
 
 		case 8:
@@ -94,14 +96,17 @@ bool Sales_item(User& u)
 }
 
 
-void User_item(User &u)
+void User_item()
 {
-	bool is_login = false;
-	int choice;
+	bool is_login = false; //判断是否登录成功
+	int choice; //选择菜单
+
 	while (true)
 	{
+		User u;//在循环内初始化对象，这样可以更新每次登陆的用户名，修复了退出登陆后记录操作时用户名仍是最初登录者的bug
 
-		u.showMenu();
+		u.showMenu();//展示用户界面菜单
+
 		cin >> choice;
 
 		switch (choice)
@@ -118,11 +123,13 @@ void User_item(User &u)
 			if (is_login == true)
 			{
 				is_login = Sales_item(u); //进入商品管理界面
+				
 				//再次判断是否登录成功，如果登录成功，进入用户管理界面
 				if (is_login == true)
 				{
 					is_login = User_edit(u); //进入编辑用户设置界面
 				}
+				
 				system("cls");
 			}
 			else

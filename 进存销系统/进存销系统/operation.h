@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Users.h"
 using namespace std;
 
@@ -7,7 +6,7 @@ using namespace std;
 bool Sales_item(User& u);
 
 //进入用户界面
-void User_item(User &u);
+void User_item();
 
 //进入编辑用户设置界面
 bool User_edit(User &u);
