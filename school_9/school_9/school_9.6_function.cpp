@@ -108,6 +108,10 @@ void checkMind(char mind[ROWS][COLS], char board[ROW][COL], int row, int col)
 	}
 }
 
+
+
+
+
 // ‰≥ˆ∆Â≈Ã
 void showBoard(char board[ROW][COL], int row, int col)
 {
@@ -115,7 +119,7 @@ void showBoard(char board[ROW][COL], int row, int col)
 	{
 		for (int j = 0; j < col; j++)
 		{
-			cout << setw(3) << board[i][j] << " ";
+			cout << setw(2) << board[i][j] << " ";
 		}
 		cout << endl;
 	}
