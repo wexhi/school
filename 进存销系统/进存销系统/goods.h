@@ -33,7 +33,6 @@ public:
 	//保存商品信息
 	void save();
 
-
 	//展示商品信息
 	void show();
 
