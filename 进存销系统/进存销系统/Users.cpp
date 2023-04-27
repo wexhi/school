@@ -77,8 +77,10 @@ void User::signUp()
 		cout << "文件不存在" << endl;
 		return;
 	}
+
 	string name;
 	string password;
+
 	while (ifs >> name >> password)
 	{
 		if (name == this->m_Name)
@@ -89,10 +91,9 @@ void User::signUp()
 
 		}
 	}
+
 	if (flag == true)
 	{
-
-
 		cout << "请输入密码：" << endl;
 		cin >> this->m_Passwaord;
 		cout << "请确认密码：" << endl;

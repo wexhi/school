@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class SalesSystem:public User
+class SalesSystem
 {
 public:
 	//¹¹Ôìº¯Êý
