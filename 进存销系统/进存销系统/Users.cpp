@@ -3,13 +3,12 @@
 //构造函数
 User::User()
 {
+	//判断文件是否存在，若不存在，则创建
 	ifstream ifs;
 	ifs.open("users.txt", ios::in);
 	if (!ifs.is_open())
 	{
 		cout << "文件不存在" << endl;
-
-		ifs.close();
 		return;
 	}
 
@@ -101,7 +100,7 @@ void User::signUp()
 		cin >> Passwaord_Confirm;
 		if (this->m_Passwaord == Passwaord_Confirm)
 		{
-			cout << "注册成功！" << endl;
+			cout << "注册成功！请进行登录！" << endl;
 			//将注册信息写入文件
 			ofstream ofs;
 			ofs.open("users.txt", ios::out | ios::app);
@@ -111,6 +110,8 @@ void User::signUp()
 			//将注册信息写入容器
 			this->m_User.push_back(User(this->m_Name, this->m_Passwaord));
 
+			system("pause");
+			system("cls");
 		}
 		else
 		{

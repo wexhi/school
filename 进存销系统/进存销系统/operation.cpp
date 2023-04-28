@@ -9,8 +9,6 @@ bool Sales_item(User& u)
 	SalesSystem sal;
 	bool is_continue = true;//判断是否继续
 
-
-
 	while (is_continue)
 	{
 		sal.showMenu();//展示菜单

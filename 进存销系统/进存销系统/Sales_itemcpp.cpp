@@ -41,7 +41,6 @@ void SalesSystem::initGoods()
 		this->goods_arr.push_back(goods);
 	}
 
-	int index = 0;
 	ifs.close();
 }
 
@@ -123,7 +122,7 @@ void  SalesSystem::createGoods(User &u)
 	this->m_allGoodsNums++;
 
 	//记录操作记录
-	History h1(id, u.getUserName(), 1, "新增商品");
+	History(id, u.getUserName(), 1, "新增商品");
 
 	cout << "新增商品成功" << endl;
 	system("pause");
@@ -137,6 +136,8 @@ void SalesSystem::showGoods()
 	if (m_allGoodsNums == 0)
 	{
 		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
 		return;
 	}
 	cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
@@ -170,6 +171,14 @@ void SalesSystem::show()
 //删除商品
 void SalesSystem::deleteGoods(User &u)
 {
+	if (m_allGoodsNums == 0)
+	{
+		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
 	show();//这是调用SalesSystem类的函数
 
 	int choice = 0;
@@ -194,7 +203,7 @@ void SalesSystem::deleteGoods(User &u)
 			update();
 
 			//记录操作
-			History h1(id, u.getUserName(), 1, "删除商品");
+			History(id, u.getUserName(), 1, "删除商品");
 
 			cout << "删除商品成功" << endl;
 		}
@@ -214,7 +223,7 @@ void SalesSystem::deleteGoods(User &u)
 			//在删除后下标消失，因此需要提前记录
 			//记录操作
 			int id = this->goods_arr[findGoodsName(name)].getID();
-			History h1(id, u.getUserName(), 1, "删除商品");
+			History(id, u.getUserName(), 1, "删除商品");
 
 			//删除商品
 			this->goods_arr.erase(this->goods_arr.begin() + findGoodsName(name));
@@ -240,14 +249,15 @@ void SalesSystem::deleteGoods(User &u)
 }
 
 //获取商品种类数量
-int   SalesSystem::getGoodsNums()
+int SalesSystem::getGoodsNums()
 {
 	ifstream ifs;
 	ifs.open("goods.txt", ios::in);
 	if (!ifs.is_open())
 	{
-		cout << "文件打开失败" << endl;
-		return 0;
+		ofstream ofs("goods.txt", ios::out);
+		ofs.close();
+		ifs.open("goods.txt", ios::in);
 	}
 	
 	int count = 0;
@@ -272,6 +282,14 @@ int   SalesSystem::getGoodsNums()
 //商品进货
 void SalesSystem::addGoods(User& u)
 {
+	if (m_allGoodsNums == 0)
+	{
+		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
 	show();
 
 	int choice = 0;
@@ -296,11 +314,13 @@ void SalesSystem::addGoods(User& u)
 			{
 				goods_arr[findGoodsID(id)].addNum(num);
 				cout << "进货成功" << endl;
+				cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+				goods_arr[findGoodsID(id)].show();
 				//更新文件
 				update();
 
 				//记录操作
-				History h1(id, u.getUserName(), num, "商品进货");
+				History(id, u.getUserName(), num, "商品进货");
 
 				system("pause");
 				system("cls");
@@ -337,11 +357,13 @@ void SalesSystem::addGoods(User& u)
 			{
 				goods_arr[findGoodsName(name)].addNum(num);
 				cout << "进货成功" << endl;
+				cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+				goods_arr[findGoodsName(name)].show();
 				//更新文件
 				update();
 
 				//记录操作
-				History h1(goods_arr[findGoodsName(name)].getID(), u.getUserName(), num, "商品进货");
+				History(goods_arr[findGoodsName(name)].getID(), u.getUserName(), num, "商品进货");
 
 				system("pause");
 				system("cls");
@@ -372,6 +394,13 @@ void SalesSystem::addGoods(User& u)
 //商品销售
 void SalesSystem::saleGoods(User& u)
 {
+	if (m_allGoodsNums == 0)
+	{
+		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
 
 	show();
 
@@ -390,7 +419,6 @@ void SalesSystem::saleGoods(User& u)
 		if (findGoodsID(id) >= 0)
 		{
 			cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
-			
 			goods_arr[findGoodsID(id)].show();
 			int num = 0;
 			cout << "请输入销售数量:>" << endl;
@@ -400,13 +428,15 @@ void SalesSystem::saleGoods(User& u)
 			{
 				goods_arr[findGoodsID(id)].subNum(num);
 				cout << "销售成功" << endl;
+				cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+				goods_arr[findGoodsID(id)].show();
 				//更新文件
 				update();
 
 				//记录操作
 				string operation = "商品销售";
 				string  user_name = u.getUserName();
-				History h1(id, user_name, num, operation);
+				History(id, user_name, num, operation);
 
 				system("pause");
 				system("cls");
@@ -442,13 +472,15 @@ void SalesSystem::saleGoods(User& u)
 			{
 				goods_arr[findGoodsName(name)].subNum(num);
 				cout << "销售成功" << endl;
+				cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+				goods_arr[findGoodsName(name)].show();
 				//更新文件
 				update();
 
 				//记录操作
 				string operation = "商品销售";
 				string  user_name = u.getUserName();
-				History h1(goods_arr[findGoodsName(name)].getID(), user_name, num, operation);
+				History(goods_arr[findGoodsName(name)].getID(), user_name, num, operation);
 
 				system("pause");
 				system("cls");
@@ -479,6 +511,13 @@ void SalesSystem::saleGoods(User& u)
 //盘点商品
 void SalesSystem::checkGoods(User& u)
 {
+	if (m_allGoodsNums == 0)
+	{
+		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
 
 	show();
 
@@ -508,13 +547,15 @@ void SalesSystem::checkGoods(User& u)
 				{
 					goods_arr[findGoodsID(id)].subNum(num);
 					cout << "出库成功" << endl;
+					cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+					goods_arr[findGoodsID(id)].show();
 					//更新文件
 					update();
 
 					//记录操作
 					string operation = "商品出库";
 					string  user_name = u.getUserName();
-					History h1(id, user_name, num, operation);
+					History(id, user_name, num, operation);
 
 					system("pause");
 					system("cls");
@@ -549,13 +590,15 @@ void SalesSystem::checkGoods(User& u)
 				{
 					goods_arr[findGoodsID(id)].addNum(num);
 					cout << "入库成功" << endl;
+					cout << "商品编号" << "\t" << "商品名称" << "\t" << "商品单位" << "\t" << "商品价格" << "\t" << "商品库存数量" << endl;
+					goods_arr[findGoodsID(id)].show();
 					//更新文件
 					update();
 
 					//记录操作
 					string operation = "商品入库";
 					string  user_name = u.getUserName();
-					History h1(id, user_name, num, operation);
+					History(id, user_name, num, operation);
 
 					system("pause");
 					system("cls");
@@ -675,6 +718,14 @@ bool SalesSystem::logOut()
 //将所有商品排序
 void SalesSystem::sortGoods()
 {
+	if (m_allGoodsNums == 0)
+	{
+		cout << "当前没有商品信息" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
 	cout << "请选择排序方式" << endl;
 	cout << "1.按商品编号排序" << endl;
 	cout << "2.按商品名称排序" << endl;
@@ -928,7 +979,7 @@ void SalesSystem::sortGoods()
 }
 
 //获取当前时间
-string getNowTime()
+static string getNowTime()
 {
 	string time_now;
 
@@ -949,19 +1000,43 @@ string getNowTime()
 	//	<< local_time.tm_sec
 	//	<< std::endl;
 	
-	time_now = to_string(local_time.tm_year + 1900) + "-" + to_string(local_time.tm_mon + 1) + "-" + to_string(local_time.tm_mday) + " " + to_string(local_time.tm_hour) + ":" + to_string(local_time.tm_min) + ":" + to_string(local_time.tm_sec);
+	//判断小时、分钟、秒是否为个位数，如果是则在前面加0
+	if (local_time.tm_hour < 10)
+	{
+		time_now = to_string(local_time.tm_year + 1900) + "-" + to_string(local_time.tm_mon + 1) + "-" + to_string(local_time.tm_mday) + " " + "0" + to_string(local_time.tm_hour) + ":";
+	}
+	else
+	{
+		time_now = to_string(local_time.tm_year + 1900) + "-" + to_string(local_time.tm_mon + 1) + "-" + to_string(local_time.tm_mday) + " " + to_string(local_time.tm_hour) + ":";
+	}
+
+	if (local_time.tm_min < 10)
+	{
+		time_now += "0" + to_string(local_time.tm_min) + ":";
+	}
+	else
+	{
+		time_now += to_string(local_time.tm_min) + ":";
+	}
+
+	if (local_time.tm_sec < 10)
+	{
+		time_now += "0" + to_string(local_time.tm_sec);
+	}
+	else
+	{
+		time_now += to_string(local_time.tm_sec);
+	}
+
 	
 	return time_now;
 }
 
 
-History::History(int id, string opeeration, int num, string Username )
+void SalesSystem::History(int id, string opeeration, int num, string Username )
 {
-	m_ID = id;
-	m_Username = Username;
-	m_Operation = opeeration;
-	m_Num = num;
-	m_Time = getNowTime();
+
+	string time = getNowTime();
 	//保存到文件中
 	ofstream ofs;
 	ofs.open("history.txt", ios::out | ios::app);
@@ -970,7 +1045,7 @@ History::History(int id, string opeeration, int num, string Username )
 		cout << "文件打开失败" << endl;
 		return;
 	}
-	ofs << m_ID << "\t" << "\t" << m_Username << "\t" << m_Operation << "\t" << m_Num << "\t" << "\t" << m_Time << endl;
+	ofs << id << "\t" << "\t" << Username << "\t" << opeeration << "\t" << num << "\t" << time << endl;
 
 	ofs.close();
 }
@@ -984,22 +1059,22 @@ void SalesSystem::showHistory()
 	ifs.open("history.txt", ios::in);
 	if (!ifs.is_open())
 	{
-		cout << "文件打开失败" << endl;
+		cout << "文件打开失败，可能原因：未对商品进行任何操作。" << endl;
+		system("pause");
+		system("cls");
 		return;
 	}
 	string line;
 
 	//展示
-	cout << "商品编号" << "\t"  << "操作方式" << "\t"  << "操作员" << "\t"  << "\t" << "数量" << "\t" << "时间" << endl << endl;
+	cout << "商品编号" << "\t"  << "操作方式" << "\t"  << "操作员" << "\t" << "数量" << "\t" << "时间" << endl << endl;
 	while (getline(ifs, line))
 	{
 		cout << line << endl;
-		cout <<"--------------------------------------------------------------------------" << endl;
+		cout <<"------------------------------------------------------------------" << endl;
 	}
 	
 	ifs.close();
 	system("pause");
 	system("cls");
-
-
 }
