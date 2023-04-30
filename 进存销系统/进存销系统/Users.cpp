@@ -395,14 +395,14 @@ void User::sortUser()
 	cout << "1.升序 " << endl;
 	cout << "2.降序 " << endl;
 	cout << "请选择排序方式:>" << endl;
-	int select = 0;
+	string select;
 	cin >> select;
 
-	if (select == 1)
+	if (select == "1" || select == "升序" || select == "1.升序")
 	{
-		for (int i = 0; i < m_User.size() - 1; i++)
+		for (size_t i = 0; i < m_User.size() - 1; i++)
 		{
-			for (int j = 0; j < m_User.size() - i - 1; j++)
+			for (size_t j = 0; j < m_User.size() - i - 1; j++)
 			{
 				if (m_User[j].m_Name > m_User[j + 1].m_Name)
 				{
@@ -413,11 +413,11 @@ void User::sortUser()
 			}
 		}
 	}
-	else if (select == 2)
+	else if (select == "2" || select == "降序" || select == "2.升序")
 	{
-		for (int i = 0; i < m_User.size() - 1; i++)
+		for (size_t i = 0; i < m_User.size() - 1; i++)
 		{
-			for (int j = 0; j < m_User.size() - i - 1; j++)
+			for (size_t j = 0; j < m_User.size() - i - 1; j++)
 			{
 				if (m_User[j].m_Name < m_User[j + 1].m_Name)
 				{
@@ -433,7 +433,7 @@ void User::sortUser()
 		cout << "输入错误！" << endl;
 		system("pause");
 		system("cls");
-		sortUser();
+		return;
 	}
 
 	//将修改后的信息写入文件

@@ -68,7 +68,7 @@ public:
 	//显示操作历史
 	void showHistory();
 
-	void History(int id, string opeeration, int num, string Username);
+	void History(int id, string goods_name, string opeeration, int num, string Username);
 
 private:
 	//商品种类数量

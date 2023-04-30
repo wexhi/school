@@ -132,7 +132,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
     <ClCompile Include="Sales_item.cpp" />
-    <ClCompile Include="Sales_itemcpp.cpp" />
     <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	//检测文件是否完全，如没有文件，则创建空文件
+	//检测初始文件是否完全，如没有文件，则创建空文件
 	checkFile();
 
 	User_item();

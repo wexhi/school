@@ -27,9 +27,6 @@
     <ClCompile Include="Users.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sales_itemcpp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Sales_item.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
