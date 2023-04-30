@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0E177D4347D9438094DD29EE0D5165DF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1DDFB886D1EF889C066D2640E51AA299"
         "OwnerKey" = "8:_32219567E7084E3991E59862CDB51E34"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,31 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2CAC98CABAE94F7D8709989FB609948E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_304B48490BAB457EAB24584934A6DB8A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_32219567E7084E3991E59862CDB51E34"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_32A3589207F1420F810CD4D446B7020C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3443CC98AFB64BAF97CE48029BE1A717"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -89,12 +59,6 @@
         {
         "MsmKey" = "8:_B8517EB32EE15B1755F6FC9AB68153AC"
         "OwnerKey" = "8:_8BEC83696A9F4137AFFF38DF202A9ECB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CF5E1C79C3D44590967109D290E01323"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -170,26 +134,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E177D4347D9438094DD29EE0D5165DF"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\users.txt"
-            "TargetName" = "8:users.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2AC02FEAD44C4D07BB59DA171CB5020B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DDFB886D1EF889C066D2640E51AA299"
             {
             "SourcePath" = "8:ucrtbased.dll"
@@ -208,86 +152,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CAC98CABAE94F7D8709989FB609948E"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\goods.txt"
-            "TargetName" = "8:goods.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_030C6994B0EB4A1AA5463AE03E707B5E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_304B48490BAB457EAB24584934A6DB8A"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\users.txt"
-            "TargetName" = "8:users.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_030C6994B0EB4A1AA5463AE03E707B5E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32A3589207F1420F810CD4D446B7020C"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\history.txt"
-            "TargetName" = "8:history.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_030C6994B0EB4A1AA5463AE03E707B5E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3443CC98AFB64BAF97CE48029BE1A717"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\history.txt"
-            "TargetName" = "8:history.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2AC02FEAD44C4D07BB59DA171CB5020B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_873FEBE870736E7ED1897F271ECF3F9D"
@@ -328,26 +192,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF5E1C79C3D44590967109D290E01323"
-            {
-            "SourcePath" = "8:..\\进存销系统\\进存销系统\\goods.txt"
-            "TargetName" = "8:goods.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2AC02FEAD44C4D07BB59DA171CB5020B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E94E118EBDE24AB58AB580FA7CF49B30"
@@ -458,7 +302,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:进存销系统可执行文件"
         "ProductCode" = "8:{096A09BC-12EA-49AC-BEFC-5797FDF81944}"
-        "PackageCode" = "8:{E8C7F64B-8EDC-473B-AE81-E88501525D56}"
+        "PackageCode" = "8:{484144D3-79CF-493B-9D9F-3A90A5206FEE}"
         "UpgradeCode" = "8:{D08DF06F-0558-40BE-9577-47C2553F940A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

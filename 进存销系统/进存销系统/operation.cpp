@@ -201,3 +201,33 @@ bool User_edit(User& u)
 	}
 	return true;
 }
+
+//检测文件是否完全，如没有文件，则创建空文件
+void checkFile()
+{
+	ifstream ifs;
+	ifs.open("goods.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		ofstream ofs;
+		ofs.open("goods.txt", ios::out);
+		ofs.close();
+	}
+	ifs.close();
+	ifs.open("users.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		ofstream ofs;
+		ofs.open("users.txt", ios::out);
+		ofs.close();
+	}
+	ifs.close();
+	ifs.open("history.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		ofstream ofs;
+		ofs.open("history.txt", ios::out);
+		ofs.close();
+	}
+	ifs.close();
+}
