@@ -15,37 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="7-5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="operation.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="good.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Users.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Sales_item.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Users.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="goods.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="operation.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sales_item.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

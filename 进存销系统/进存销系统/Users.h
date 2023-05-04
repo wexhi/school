@@ -4,20 +4,15 @@
 #include<vector>
 #include<fstream>
 
-
 using namespace std;
-
 
 //定义登陆界面
 class User
 {
-
-
 public:
 
 	//构造函数
 	User();
-
 
 	//构造函数
 	User(string name, string password)

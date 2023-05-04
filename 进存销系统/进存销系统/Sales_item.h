@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class SalesSystem:public User
+class SalesSystem
 {
 public:
 	//构造函数
@@ -68,6 +68,7 @@ public:
 	//显示操作历史
 	void showHistory();
 
+	void History(int id, string goods_name, string opeeration, int num, string Username);
 
 private:
 	//商品种类数量
@@ -75,27 +76,10 @@ private:
 
 	//将商品按种类写入
 	vector<Goods> goods_arr;
-
 };
 
-//获取当前时间的函数
-string getNowTime();
-
-class History
-{
-public:
-	//构造函数
-	History(int id, string opeeration, int num, string Username);
-
-private:
-	int m_ID;//商品编号
-	string m_Username;//用户名
-	string m_Operation;//操作
-	int m_Num;//改变商品数量
-	string m_Time;//操作时间
 
 
-};
 
 
 
