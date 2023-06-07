@@ -511,6 +511,8 @@ void SalesSystem::saleGoods(User& u)
 //盘点商品
 void SalesSystem::checkGoods(User& u)
 {
+	system("cls");
+	system("color 04");
 	if (m_allGoodsNums == 0)
 	{
 		cout << "当前没有商品信息" << endl;

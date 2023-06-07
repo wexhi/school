@@ -57,6 +57,7 @@ bool Sales_item(User& u)
 			case 7:
 				//≈Ãµ„…Ã∆∑
 				sal.checkGoods(u);
+				system("color 07");
 				break;
 
 			case 8:
